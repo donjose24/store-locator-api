@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             $api_id = "AIzaSyBlrchX9elMViPeAvmcqaN74sftBGKNMNs";
             if(is_null($page_token)) {
                 $get_data = http_build_query([
-                    'query' => 'Drugstre in Philippines',
+                    'query' => 'Drugstores in the Philippines',
                     'key' => $api_id
                 ]);           
                 $results = file_get_contents('https://maps.googleapis.com/maps/api/place/textsearch/json?' . $get_data ,false);
@@ -51,9 +51,8 @@ class DatabaseSeeder extends Seeder
                     $store->long = $result->geometry->location->lng;
                     $store->save();
                 }
-                $page_token = $results->next_page_token;
             }
-            if(is_null($page_token)) {
+            if(is_null($results->next_page_token)) {
                 break;
             }
         }
