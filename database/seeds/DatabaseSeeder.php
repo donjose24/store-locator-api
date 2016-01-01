@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {  
+        DB::query('TRUNCATE TABLE stores');
         $page_token = null;
         while(true) {
             $api_id = "AIzaSyBlrchX9elMViPeAvmcqaN74sftBGKNMNs";
