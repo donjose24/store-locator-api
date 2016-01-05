@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {  
-        DB::query('TRUNCATE TABLE stores');
+        DB::table('stores')->truncate();
         $page_token = null;
         while(true) {
-            $api_id = "AIzaSyBlrchX9elMViPeAvmcqaN74sftBGKNMNs";
+            $api_id = "AIzaSyCWhdA9YqfE9lIbFlFLLPbyZvEwR8hdyQ4";
             if(is_null($page_token)) {
                 $get_data = http_build_query([
                     'query' => 'Drugstores in the Philippines',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             } else {
                 $api_id = "AIzaSyBlrchX9elMViPeAvmcqaN74sftBGKNMNs";
                 $get_data = http_build_query([
-                    'query' => 'Drugstre in Philippines',
+                    'query' => 'Drugstores in Philippines',
                     'key' => $api_id,
                     'pagetoken' => $page_token
                 ]);           
@@ -52,9 +52,12 @@ class DatabaseSeeder extends Seeder
                     $store->long = $result->geometry->location->lng;
                     $store->save();
                 }
-            }
-            if(is_null($results->next_page_token)) {
-                break;
+
+                if(is_null($results->next_page_token)) {
+                    break;
+                } else {
+                    $page_token = $results->next_page_token;
+                }
             }
         }
     }
