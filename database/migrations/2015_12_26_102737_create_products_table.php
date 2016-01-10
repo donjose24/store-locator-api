@@ -15,8 +15,10 @@ class CreateProductsTable extends Migration
         Schema::create('products', function($table){
             $table->increments('id');
             $table->string('name');
-            $table->string('desc');
+            $table->string('description');
             $table->string('url');
+            $table->double('price');
+            $table->string('category');
             $table->string('dosage');
             $table->softDeletes();
             $table->timestamps();
