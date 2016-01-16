@@ -43,6 +43,8 @@ class EloquentProductService implements ProductService {
 
     public function search($query) 
     {
-        return Product::where('name', 'LIKE', "%$query%")->get();
+        return Product::where('name', 'LIKE', "%$query%")
+            ->orWhere('category', 'LIKE', "%$query%")
+            ->get();
     }
 }
