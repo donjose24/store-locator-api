@@ -15,14 +15,14 @@ class StoreController extends Controller
 
     public function all(Request $request) {
         if($request->get('format') == "json")
-            return response()->json($this->store->all()->toJson());
+            return response()->json($this->store->all());
         else
             return response()->json($this->store->all())->setCallback($request->get('callback'));
     }
 
     public function show($id, Request $request) {
         if($request->get('format') == "json")
-            return response()->json($this->store->find($id)->toJson());
+            return response()->json($this->store->find($id));
         else
             return response()->json($this->store->find($id))->setCallback($request->get('callback'));
     }

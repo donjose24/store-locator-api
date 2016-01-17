@@ -37,8 +37,7 @@ class EloquentProductService implements ProductService {
 
     public function all() 
     {
-        $products = Product::all();
-        return $products;
+        return Product::all();
     }
 
     public function search($query) 
