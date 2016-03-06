@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -43,3 +39,10 @@ Route::get('/api/store/','Api\StoreController@all');
 Route::get('/api/store/{id}', 'Api\StoreController@show');
 Route::get('/api/product/', 'Api\ProductController@all');
 Route::post('/api/product/search', 'Api\ProductController@search');
+Route::get('/', 'HomeController@index');
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+    Route::get('/home', 'HomeController@index');
+    Route::get('/stores', 'HomeController@stores');
+    Route::get('/medicines', 'HomeController@medicines');
+});

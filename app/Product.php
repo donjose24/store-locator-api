@@ -10,4 +10,9 @@ class Product extends Model {
     use SoftDeletes;
     
     protected $dates = ['deleted_at'];
+
+    public function stores() 
+    {
+        return $this->belongsToMany('Store');
+    }
 }
