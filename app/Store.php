@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Store extends Model{
+class Store extends Model
+{
 
     use SoftDeletes;
 
@@ -15,5 +16,4 @@ class Store extends Model{
     {
         return $this->belongstoMany('Product');
     }
-
 }

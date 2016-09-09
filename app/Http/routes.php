@@ -26,16 +26,16 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::post('oauth/access_token', function(){
+Route::post('oauth/access_token', function () {
     return Response::json(Authorizer::issueAccessToken());
 });
 
-Route::group(['middleware' => 'oauth'], function() {
-    Route::get('/what', function() {
+Route::group(['middleware' => 'oauth'], function () {
+    Route::get('/what', function () {
         return "WOW";
     });
 });
-Route::get('/api/store/','Api\StoreController@all');
+Route::get('/api/store/', 'Api\StoreController@all');
 Route::get('/api/store/{id}', 'Api\StoreController@show');
 Route::get('/api/product/', 'Api\ProductController@all');
 Route::post('/api/product/search', 'Api\ProductController@search');
@@ -45,4 +45,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/stores', 'HomeController@stores');
     Route::get('/medicines', 'HomeController@medicines');
+    Route::get('/medicine', 'HomeController@request');
 });

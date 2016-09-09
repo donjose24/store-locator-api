@@ -32,12 +32,21 @@ class HomeController extends Controller
     public function stores()
     {
         $stores = Store::all();
-        return view('stores',compact('stores'));
+        return view('stores', compact('stores'));
     }
 
     public function medicines()
     {
         $medicines = Product::all();
         return view('medicines', compact('medicines'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchKey = $request->get('search');
+
+        $medicines = Product::where('name', 'like', "%$searchKey%");
+        return view('medicines', compact('medicines'));
+          
     }
 }
