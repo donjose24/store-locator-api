@@ -10,24 +10,29 @@ use App\Contracts\ProductService;
 
 class ProductController extends Controller
 {
-    public function __construct(ProductService $product) {
+    public function __construct(ProductService $product)
+    {
         $this->product = $product;
     }
 
-    public function all(Request $request) {
-        if($request->get('format') == "json") 
+    
+    public function all(Request $request)
+    {
+        if ($request->get('format') == "json") {
             return response()->json($this->product->all());
-        else
+        } else {
             return response()->json($this->product->all())->setCallback($request->get('callback'));
+        }
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $query = $request->get('query');
 
-        if($request->get('format') == "json") 
+        if ($request->get('format') == "json") {
             return response()->json($this->product->search($query));
-        else
+        } else {
             return response()->json($this->product->search($query))->setCallback($request->get('callback'));
+        }
     }
 }
-

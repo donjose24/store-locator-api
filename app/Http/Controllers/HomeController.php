@@ -40,13 +40,4 @@ class HomeController extends Controller
         $medicines = Product::all();
         return view('medicines', compact('medicines'));
     }
-
-    public function search(Request $request)
-    {
-        $searchKey = $request->get('search');
-
-        $medicines = Product::where('name', 'like', "%$searchKey%");
-        return view('medicines', compact('medicines'));
-          
-    }
 }
