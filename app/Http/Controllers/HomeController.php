@@ -60,4 +60,6 @@ class HomeController extends Controller
             $store->save();
         }
     }
+
+    return 'ok';
 }
