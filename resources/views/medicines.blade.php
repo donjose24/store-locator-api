@@ -35,7 +35,24 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Add Medicine</div>
                         <div class="panel-body">
-                            Form
+                            {{Form::open(['action' => 'ProductController@store'])}}
+                                {{Form::label('name', "Name")}}
+                                {{Form::text('name', '')}}
+
+                                {{Form::label('description', "Description")}}
+                                {{Form::textarea('description', '')}}
+
+                                {{Form::label('price', "Price")}}
+                                {{Form::number('price', '')}}
+
+                                {{Form::label('category', "Category")}}
+                                {{Form::text('category', '')}}
+
+                                {{Form::label('dosage', "Dosage")}}
+                                {{Form::text('dosage', '')}}
+
+                                {{Form::submit('Save')}}
+                            {{Form::close()}}
                         </div>
                 </div>
             </div>
