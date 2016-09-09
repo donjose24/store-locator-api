@@ -38,18 +38,23 @@
                             {{Form::open(['url' => '/product', 'method' => 'POST'])}}
                                 {{Form::label('name', "Name")}}
                                 {{Form::text('name', '')}}
+                                <br>
 
                                 {{Form::label('description', "Description")}}
                                 {{Form::textarea('description', '')}}
+                                <br>
 
                                 {{Form::label('price', "Price")}}
                                 {{Form::number('price', '')}}
+                                <br>
 
                                 {{Form::label('category', "Category")}}
                                 {{Form::text('category', '')}}
+                                <br>
 
                                 {{Form::label('dosage', "Dosage")}}
                                 {{Form::text('dosage', '')}}
+                                <br>
 
                                 {{Form::submit('Save')}}
                             {{Form::close()}}
