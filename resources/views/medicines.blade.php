@@ -35,7 +35,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Add Medicine</div>
                         <div class="panel-body">
-                            {{Form::open(['action' => 'ProductController@store'])}}
+                            {{Form::open(['url' => '/product', 'method' => 'POST'])}}
                                 {{Form::label('name', "Name")}}
                                 {{Form::text('name', '')}}
 

@@ -46,4 +46,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/stores', 'HomeController@stores');
     Route::get('/medicines', 'HomeController@medicines');
+    Route::post('/product', 'ProductController@store');
 });
