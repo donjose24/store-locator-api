@@ -39,7 +39,7 @@ Route::get('/api/store/', 'Api\StoreController@all');
 Route::get('/api/store/{id}', 'Api\StoreController@show');
 Route::get('/api/product/', 'Api\ProductController@all');
 Route::get('/api/product/search', 'Api\ProductController@search');
-Route::get('/api/analytics', 'HomeController@analytics');
+Route::get('/api/analytics', 'Api\ApiController@analytics');
 Route::get('/', 'HomeController@index');
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
