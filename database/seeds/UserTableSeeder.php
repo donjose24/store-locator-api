@@ -12,10 +12,13 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
+
         $user = new User();
         $user->name = "kriste";
         $user->email = 'admin@medisearch.com';
         $user->password = Hash::make('admin');
         $user->save();
+
     }
 }
