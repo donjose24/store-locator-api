@@ -59,7 +59,8 @@ class HomeController extends Controller
             $store->views = $views + 1;
             $store->save();
         }
+
+        return 'ok';
     }
 
-    return 'ok';
 }
