@@ -38,7 +38,7 @@ Route::group(['middleware' => 'oauth'], function () {
 Route::get('/api/store/', 'Api\StoreController@all');
 Route::get('/api/store/{id}', 'Api\StoreController@show');
 Route::get('/api/product/', 'Api\ProductController@all');
-Route::get('/api/search/product', 'Api\ProductController@search');
+Route::get('/api/product/search', 'Api\ProductController@search');
 Route::get('/', 'HomeController@index');
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
