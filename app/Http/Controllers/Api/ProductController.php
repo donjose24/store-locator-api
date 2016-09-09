@@ -35,4 +35,18 @@ class ProductController extends Controller
             return response()->json($this->product->search($query))->setCallback($request->get('callback'));
         }
     }
+
+    public function store(Request $request)
+    {
+        $product = new Product();
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->price = $request->get('price');
+        $product->category = $request->get('category');
+        $product->dosage = $request->get('dosage');
+
+        $product->save();
+
+        return redirect()->back();
+    }
 }
