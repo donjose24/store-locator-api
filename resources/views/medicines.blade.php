@@ -13,6 +13,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Created At</th>
+                            <th>Views</th>
                         </thead>
                         <tbody>
                             @foreach($medicines as $medicine)
@@ -21,6 +22,7 @@
                                 <td>{{$medicine->name}}</td>
                                 <td>{{$medicine->description}}</td>
                                 <td>{{date_format($medicine->created_at,'Y/m/d')}}</td>
+                                <td>{{$medicine->views}}</td>
                             </tr>
                             @endforeach
                         </tbody>

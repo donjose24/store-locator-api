@@ -13,6 +13,7 @@
                             <th>Name</th>
                             <th>Address</th>
                             <th>Created At</th>
+                            <th>Views</th>
                         </thead>
                         <tbody>
                             @foreach($stores as $store)
@@ -21,6 +22,7 @@
                                     <td>{{$store->name}}</td>
                                     <td>{{$store->address}}</td>
                                     <td>{{date_format($store->created_at,'Y/m/d')}}</td>
+                                    <td>{{$store->views}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
