@@ -40,4 +40,24 @@ class HomeController extends Controller
         $medicines = Product::all();
         return view('medicines', compact('medicines'));
     }
+
+    public function analytics(Request $request)
+    {
+        $model = $request->get('model');
+        $id = $request->get('id');
+
+        if ($model == "product") {
+            $product = Product::find($id);
+
+            $views = $product->views;
+            $product->views = $views + 1;
+            $product->save();
+        } else {
+            $store = Store::find($id);
+
+            $views = $store->views;
+            $store->views = $views + 1;
+            $store->save();
+        }
+    }
 }
