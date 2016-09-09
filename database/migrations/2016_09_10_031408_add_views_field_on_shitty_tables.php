@@ -13,11 +13,11 @@ class AddViewsFieldOnShittyTables extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('views');
+            $table->integer('views')->default(0);
         });
 
         Schema::table('stores', function (Blueprint $table) {
-            $table->integer('views');
+            $table->integer('views')->default(0);
         });
     }
 
