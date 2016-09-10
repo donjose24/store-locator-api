@@ -38,19 +38,23 @@
                     <div class="panel-body">
                         {{Form::open(['url' => '/store', 'method' => 'POST'])}}
                         {{Form::label('name', "Name")}}
+                        <br>
                         {{Form::text('name', '')}}
                         <br>
 
                         {{Form::label('address', "Address")}}
+                        <br>
                         {{Form::textarea('address', '')}}
                         <br>
 
                         {{Form::label('lat', "Latitude")}}
+                        <br>
                         {{Form::number('lat', '')}}
                         <br>
 
                         {{Form::label('long', "Longitude")}}
-                        {{Form::text('lang', '')}}
+                        <br>
+                        {{Form::text('long', '')}}
                         <br>
 
                         {{Form::submit('Save')}}

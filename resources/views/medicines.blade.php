@@ -37,22 +37,27 @@
                         <div class="panel-body">
                             {{Form::open(['url' => '/product', 'method' => 'POST'])}}
                                 {{Form::label('name', "Name")}}
+                                <br>
                                 {{Form::text('name', '')}}
                                 <br>
 
                                 {{Form::label('description', "Description")}}
+                                <br>
                                 {{Form::textarea('description', '')}}
                                 <br>
 
                                 {{Form::label('price', "Price")}}
+                                <br>
                                 {{Form::number('price', '')}}
                                 <br>
 
                                 {{Form::label('category', "Category")}}
+                                <br>
                                 {{Form::text('category', '')}}
                                 <br>
 
                                 {{Form::label('dosage', "Dosage")}}
+                                <br>
                                 {{Form::text('dosage', '')}}
                                 <br>
 
