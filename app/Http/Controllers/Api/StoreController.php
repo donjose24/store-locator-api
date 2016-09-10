@@ -35,6 +35,7 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $store = new Store();
+        $store->name = $request->get('name');
         $store->address = $request->get('address');
         $store->lat = $request->get('lat');
         $store->long = $request->get('long');
