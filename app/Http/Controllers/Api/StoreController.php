@@ -39,6 +39,7 @@ class StoreController extends Controller
         $store->address = $request->get('address');
         $store->lat = $request->get('lat');
         $store->long = $request->get('long');
+        $store->url = "blaaah";
 
         $store->save();
 
