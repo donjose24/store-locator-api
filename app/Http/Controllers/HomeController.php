@@ -32,13 +32,12 @@ class HomeController extends Controller
     public function stores()
     {
         $stores = Store::all();
-        return view('stores', compact('stores'));
+        return view('store.index', compact('stores'));
     }
 
     public function medicines()
     {
         $medicines = Product::all();
-        return view('medicines', compact('medicines'));
+        return view('medicine.index', compact('medicines'));
     }
-
 }

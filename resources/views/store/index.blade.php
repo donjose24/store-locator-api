@@ -7,6 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Stores</div>
                     <div class="panel-body">
+                        @include('layouts.notification')
                         <table id="table">
                             <thead>
                                 <th>Store ID</th>
@@ -39,25 +40,26 @@
                         {{Form::open(['url' => '/store', 'method' => 'POST'])}}
                         {{Form::label('name', "Name")}}
                         <br>
-                        {{Form::text('name', '')}}
+                        {{Form::text('name')}}
                         <br>
 
                         {{Form::label('address', "Address")}}
                         <br>
-                        {{Form::textarea('address', '')}}
+                        {{Form::textarea('address')}}
                         <br>
 
                         {{Form::label('lat', "Latitude")}}
                         <br>
-                        {{Form::number('lat', '')}}
+                        {{Form::number('lat')}}
                         <br>
 
                         {{Form::label('long', "Longitude")}}
                         <br>
-                        {{Form::text('long', '')}}
+                        {{Form::text('long')}}
+                        <br>
                         <br>
 
-                        {{Form::submit('Save')}}
+                        {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
                         {{Form::close()}}
                     </div>
                 </div>

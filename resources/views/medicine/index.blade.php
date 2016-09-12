@@ -7,6 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Medicines</div>
                     <div class="panel-body">
+                        @include('layouts.notification')
                         <table id="table">
                             <thead>
                                 <th>Medicine ID</th>
@@ -38,30 +39,30 @@
                             {{Form::open(['url' => '/product', 'method' => 'POST'])}}
                                 {{Form::label('name', "Name")}}
                                 <br>
-                                {{Form::text('name', '')}}
+                                {{Form::text('name')}}
                                 <br>
 
                                 {{Form::label('description', "Description")}}
                                 <br>
-                                {{Form::textarea('description', '')}}
+                                {{Form::textarea('description')}}
                                 <br>
 
                                 {{Form::label('price', "Price")}}
                                 <br>
-                                {{Form::number('price', '')}}
+                                {{Form::number('price')}}
                                 <br>
 
                                 {{Form::label('category', "Category")}}
                                 <br>
-                                {{Form::text('category', '')}}
+                                {{Form::text('category')}}
                                 <br>
 
                                 {{Form::label('dosage', "Dosage")}}
                                 <br>
-                                {{Form::text('dosage', '')}}
+                                {{Form::text('dosage')}}
                                 <br>
-
-                                {{Form::submit('Save')}}
+                                <br>
+                                {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
                             {{Form::close()}}
                         </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Log;
+use Validator;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,6 +39,23 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category' => 'required',
+            'dosage' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $product = new Product();
         $product->name = $request->get('name');
         $product->description = $request->get('description');
@@ -46,6 +64,7 @@ class ProductController extends Controller
         $product->dosage = $request->get('dosage');
 
         $product->save();
+        $request->session()->flash('message', 'Medicine successfuly added');
 
         return redirect()->back();
     }

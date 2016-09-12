@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Validator;
 use App\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -34,6 +35,22 @@ class StoreController extends Controller
 
     public function store(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+            'address' => 'required',
+            'lat' => 'required|numeric',
+            'long' => 'required|numeric',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $store = new Store();
         $store->name = $request->get('name');
         $store->address = $request->get('address');
@@ -42,6 +59,7 @@ class StoreController extends Controller
         $store->url = "blaaah";
 
         $store->save();
+        $request->session()->flash('message', 'Store successfuly added');
 
         return redirect()->back();
     }
