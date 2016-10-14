@@ -22,10 +22,6 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
 Route::post('oauth/access_token', function () {
     return Response::json(Authorizer::issueAccessToken());
 });
@@ -48,4 +44,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/medicines', 'HomeController@medicines');
     Route::post('/product', 'Api\ProductController@store');
     Route::post('/store', 'Api\StoreController@store');
+    Route::get('/store/delete/{id}', 'Api\StoreController@destroy');
+    Route::get('/product/edit/{id}', 'Api\ProductController@edit');
+    Route::get('/store/edit/{id}', 'Api\StoreController@edit');
+    Route::get('/product/delete/{id}', 'Api\ProductController@destroy');
+    Route::put('/product', 'Api\ProductController@update');
+    Route::put('/stores', 'Api\StoreController@update');
 });

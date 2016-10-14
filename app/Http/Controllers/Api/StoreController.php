@@ -63,4 +63,53 @@ class StoreController extends Controller
 
         return redirect()->back();
     }
+
+    public function edit($id)
+    {
+        $store = Store::findOrFail($id);
+        return view('store.edit', compact('store'));
+    }
+
+    public function update(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'address' => 'required',
+            'lat' => 'required|numeric',
+            'long' => 'required|numeric',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $id = $request->get('id');
+        $store = Store::find($id);
+        $store->name = $request->get('name');
+        $store->address = $request->get('address');
+        $store->lat = $request->get('lat');
+        $store->long = $request->get('long');
+        $store->url = "blaaah";
+
+        $store->save();
+        $request->session()->flash('message', 'Store successfuly updated');
+
+        return redirect('/stores');
+    }
+
+
+    public function destroy($id, Request $request)
+    {
+        $store = Store::findOrFail($id);
+        $store->delete();
+
+        $request->session()->flash('message', 'Store successfuly deleted');
+
+        return redirect()->back();
+    }
 }

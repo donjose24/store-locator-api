@@ -15,6 +15,8 @@
                                 <th>Address</th>
                                 <th>Created At</th>
                                 <th>Views</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </thead>
                             <tbody>
                                 @foreach($stores as $store)
@@ -24,6 +26,8 @@
                                         <td>{{$store->address}}</td>
                                         <td>{{date_format($store->created_at,'Y/m/d')}}</td>
                                         <td>{{$store->views}}</td>
+                                        <td><a href="/store/edit/{{$store->id}}" class="btn btn-primary">Edit</a></td>
+                                        <td><a href="/store/delete/{{$store->id}}" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

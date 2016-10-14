@@ -15,6 +15,8 @@
                                 <th>Description</th>
                                 <th>Created At</th>
                                 <th>Views</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </thead>
                             <tbody>
                                 @foreach($medicines as $medicine)
@@ -24,6 +26,8 @@
                                         <td>{{$medicine->description}}</td>
                                         <td>{{date_format($medicine->created_at,'Y/m/d')}}</td>
                                         <td>{{$medicine->views}}</td>
+                                        <td>{!! link_to ("/product/edit/$medicine->id", "Edit", ['class' => 'btn btn-primary'])!!}</td>
+                                        <td><a href="/product/delete/{{$medicine->id}}" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
