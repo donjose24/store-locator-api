@@ -48,7 +48,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/product/edit/{id}', 'Api\ProductController@edit');
     Route::get('/store/edit/{id}', 'Api\StoreController@edit');
     Route::get('/product/delete/{id}', 'Api\ProductController@destroy');
-    Route::get('/store/view/{id}', 'API\StoreController@view');
+    Route::get('/store/view/{id}', 'Api\StoreController@view');
     Route::put('/product', 'Api\ProductController@update');
     Route::put('/stores', 'Api\StoreController@update');
     Route::get('/store/product/add/{id}/{storeId}', 'Api\StoreController@addMedicine');
