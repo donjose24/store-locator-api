@@ -14,6 +14,6 @@ class Store extends Model
 
     public function products()
     {
-        return $this->belongstoMany('Product');
+        return $this->belongstoMany('App\Product');
     }
 }

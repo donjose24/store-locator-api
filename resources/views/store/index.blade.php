@@ -17,6 +17,7 @@
                                 <th>Views</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
+                                <th> View </th>
                             </thead>
                             <tbody>
                                 @foreach($stores as $store)
@@ -28,6 +29,7 @@
                                         <td>{{$store->views}}</td>
                                         <td><a href="/store/edit/{{$store->id}}" class="btn btn-primary">Edit</a></td>
                                         <td><a href="/store/delete/{{$store->id}}" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="/store/view/{{$store->id}}" class="btn btn-success"> View </a> </td>
                                     </tr>
                                 @endforeach
                             </tbody>

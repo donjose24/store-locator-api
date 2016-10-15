@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Validator;
 use App\Store;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\StoreService;
@@ -110,6 +111,37 @@ class StoreController extends Controller
 
         $request->session()->flash('message', 'Store successfuly deleted');
 
+        return redirect()->back();
+    }
+
+    public function view($id)
+    {
+        $store = Store::findOrFail($id);
+        $ids = [];
+        foreach ($store->products()->get() as $medicine) {
+            $ids = array_prepend($ids, $medicine->id);
+        }
+        $medicines = Product::whereNotIn('id', $ids)->get();
+        return view('store.view', compact('store', 'medicines'));
+    }
+
+    public function addMedicine($id, $storeId, Request $request)
+    {
+        $store = Store::findOrFail($storeId);
+        $store->products()->attach($id);
+        $store->save();
+
+        $request->session()->flash('message', 'Medicine successfuly added to store');
+        return redirect()->back();
+    }
+
+    public function deleteMedicine($id, $storeId, Request $request)
+    {
+        $store = Store::findOrFail($storeId);
+        $store->products()->detach($id);
+        $store->save();
+
+        $request->session()->flash('message', 'Medicine successfuly remove from store');
         return redirect()->back();
     }
 }
